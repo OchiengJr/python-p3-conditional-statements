@@ -1,42 +1,26 @@
-/*
-  Write a method `admin_login` that takes two arguments, a username and a
-  password. If the username is "admin" or "ADMIN" and the password is "12345",
-  return "Access granted". Otherwise, return "Access denied".
-*/
+#!/usr/bin/env node
+
+// Function to handle admin login
 function adminLogin(username, password) {
-  if ((username === "admin" || username === "ADMIN") && password === "12345") {
-    return "Access granted";
-  } else {
-    return "Access denied";
-  }
+  return (username === "admin" || username === "ADMIN") && password === "12345" 
+    ? "Access granted" 
+    : "Access denied";
 }
 
-/*
-  Write a method `hows_the_weather` that takes in one argument, a temperature.
-  If the temperature is below 40, return "It's brisk out there!". If the temperature is
-  between 40 and 65, return "It's a little chilly out there!". If the temperature is above 85,
-  return "It's too dang hot out there!". Otherwise, return "It's perfect out there!"
-*/
+// Function to describe the weather based on temperature
 function howsTheWeather(temperature) {
-  let response;
   if (temperature < 40) {
-    response = "brisk";
-  } else if (temperature >= 40 && temperature <= 65) {
-    response = "a little chilly";
+    return "It's brisk out there!";
+  } else if (temperature <= 65) {
+    return "It's a little chilly out there!";
   } else if (temperature > 85) {
-    response = "too dang hot";
+    return "It's too dang hot out there!";
   } else {
-    response = "perfect";
+    return "It's perfect out there!";
   }
-  return `It's ${response} out there!`;
 }
 
-/* 
-  Write a method `fizzbuzz` takes in a number. For multiples of three, return
-  "Fizz" instead of the number. For the multiples of five, return "Buzz". For
-  numbers which are multiples of both three and five, return "FizzBuzz". For
-  all other numbers, just return the number itself.
-*/
+// Function to play FizzBuzz
 function fizzbuzz(num) {
   if (num % 3 === 0 && num % 5 === 0) {
     return "FizzBuzz";
@@ -49,12 +33,7 @@ function fizzbuzz(num) {
   }
 }
 
-/*
-  Write a method `calculator` that takes three arguments: an operation and two
-  numbers. If the operation is one of the following: `+`, `-`, `*`, or `\`,
-  return the value of calling the operation on the two numbers. Otherwise,
-  output a message saying "Invalid operation!" and return `nil`.
-*/
+// Function to act as a basic calculator
 function calculator(operation, num1, num2) {
   switch (operation) {
     case "+":
@@ -67,5 +46,27 @@ function calculator(operation, num1, num2) {
       return num1 / num2;
     default:
       console.log("Invalid operation!");
+      return null; // or undefined if preferred
   }
 }
+
+// Example usage:
+
+console.log(adminLogin("admin", "12345")); // "Access granted"
+console.log(adminLogin("user", "password")); // "Access denied"
+
+console.log(howsTheWeather(30)); // "It's brisk out there!"
+console.log(howsTheWeather(50)); // "It's a little chilly out there!"
+console.log(howsTheWeather(90)); // "It's too dang hot out there!"
+console.log(howsTheWeather(70)); // "It's perfect out there!"
+
+console.log(fizzbuzz(3)); // "Fizz"
+console.log(fizzbuzz(5)); // "Buzz"
+console.log(fizzbuzz(15)); // "FizzBuzz"
+console.log(fizzbuzz(7)); // 7
+
+console.log(calculator("+", 10, 5)); // 15
+console.log(calculator("-", 10, 5)); // 5
+console.log(calculator("*", 10, 5)); // 50
+console.log(calculator("/", 10, 5)); // 2
+console.log(calculator("%", 10, 5)); // Invalid operation!
